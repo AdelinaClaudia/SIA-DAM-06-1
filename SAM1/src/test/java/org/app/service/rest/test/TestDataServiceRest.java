@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
 
 public class TestDataServiceRest {
 	private static Logger logger = Logger.getLogger(TestDataServiceRest.class.getName());
-	private static String serviceURL = "http://localhost:8080/SAM1/rest/service";
+	private static String serviceURL = "http://localhost:8080/SAM6/rest/service";
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

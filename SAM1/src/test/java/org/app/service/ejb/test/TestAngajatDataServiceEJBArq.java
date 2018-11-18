@@ -22,6 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
+
 @RunWith(Arquillian.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestAngajatDataServiceEJBArq {
@@ -32,6 +33,7 @@ public class TestAngajatDataServiceEJBArq {
 	@Deployment
 	public static Archive<?> createDeployment(){
 		return ShrinkWrap.create(WebArchive.class,"SCRUM-S3-test.war")
+
 				.addPackage(Angajat.class.getPackage())
 				.addClass(AngajatService.class)
 				.addClass(AngajatiServiceEJB.class)

@@ -44,6 +44,7 @@ public class Contract {
 	private Client client;
 	@ManyToOne
 	private Angajat angajat;
+	@OneToMany 
 	private List<Penalizare>penalizari=new ArrayList <Penalizare>();
 	private Float Sumapenalizare;
 	public Float getSumacontract() {

@@ -34,7 +34,7 @@ public class TestClientDataServiceEJBArq {
 	
 	@Deployment
 	public static Archive<?> createDeployment(){
-		return ShrinkWrap.create(WebArchive.class,"SCRUM-S3-test.war")
+		return ShrinkWrap.create(WebArchive.class,"SCRUM-SAM6-test.war")
 				.addPackage(Client.class.getPackage())
 				.addClass(ClientService.class)
 				.addClass(ClientServiceEJB.class)

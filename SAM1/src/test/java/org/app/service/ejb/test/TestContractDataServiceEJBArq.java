@@ -65,7 +65,7 @@ public class TestContractDataServiceEJBArq {
 		Integer contractToAdd=3;
 		for(int i=1;i<=contractToAdd;i++)
 		{
-			service.addContract(new Contract(null, "Contract_"+(100+i), null));
+			service.addContract(new Contract((100+i)));
 
 		}
 		Collection<Contract> contract=service.getContract();

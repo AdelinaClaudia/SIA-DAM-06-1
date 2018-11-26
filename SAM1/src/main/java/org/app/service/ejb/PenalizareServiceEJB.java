@@ -38,7 +38,7 @@ public class PenalizareServiceEJB extends EntityRepositoryBase<Penalizare> imple
 		return em.find(Penalizare.class, idPenalizare);
 	}
 	public Collection<Penalizare>getPenalizare(){
-		List<Penalizare> penalizare=em.createQuery("Select p From Penalizare p, Penalizare.class").getResultList();
+		List<Penalizare> penalizare=em.createQuery("Select p From Penalizare p", Penalizare.class).getResultList();
 		return penalizare;
 	}
 	//custome read 

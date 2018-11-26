@@ -37,7 +37,7 @@ public class ContractServiceEJB extends EntityRepositoryBase<Contract> implement
 		return em.find(Contract.class, numarContract);
 	}
 	public Collection<Contract>getContract(){
-		List<Contract> contract=em.createQuery("Select co From Contract co, Contract.class").getResultList();
+		List<Contract> contract=em.createQuery("Select co From Contract co", Contract.class).getResultList();
 		return contract;
 	}
 	//custome read 

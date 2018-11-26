@@ -8,11 +8,14 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 
+import org.app.patterns.EntityRepository;
 import org.app.service.ejb.AngajatService;
 import org.app.service.ejb.AngajatiServiceEJB;
 import org.app.service.entities.Angajat;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.as.arquillian.*;
+import org.jboss.arquillian.container.*;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
@@ -22,7 +25,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
-
 @RunWith(Arquillian.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestAngajatDataServiceEJBArq {
@@ -30,9 +32,34 @@ public class TestAngajatDataServiceEJBArq {
 	@EJB
 	private static AngajatService service ;
 	
+	
+	 @Deployment
+
+     public static Archive<?> createDeployment(){
+
+            return ShrinkWrap.create(WebArchive.class,"msd-test.war")
+
+
+
+                         .addPackage(Angajat.class.getPackage())
+
+                         .addPackage(EntityRepository.class.getPackage())
+
+                         .addPackage(AngajatService.class.getPackage())
+
+                         .addPackage(AngajatiServiceEJB.class.getPackage())
+
+                         .addAsResource("META-INF/persistence.xml")
+
+                         .addAsManifestResource(EmptyAsset.INSTANCE,"beans.xml");
+
+                        
+
+     }
+	 /*
 	@Deployment
 	public static Archive<?> createDeployment(){
-		return ShrinkWrap.create(WebArchive.class,"SCRUM-S3-test.war")
+		return ShrinkWrap.create(WebArchive.class,"MSD-test.war")
 
 				.addPackage(Angajat.class.getPackage())
 				.addClass(AngajatService.class)
@@ -41,7 +68,7 @@ public class TestAngajatDataServiceEJBArq {
 				.addAsManifestResource(EmptyAsset.INSTANCE,"beans.xml");
 				
 	}
-	
+	*/
 	@Test
 	public void test1_getMessage() {
 		logger.info("DEBUG:Junit TESTING: getMessage ...");

@@ -8,8 +8,12 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 
+import org.app.patterns.EntityRepository;
+import org.app.service.ejb.AngajatService;
+import org.app.service.ejb.AngajatiServiceEJB;
 import org.app.service.ejb.PenalizareService;
 import org.app.service.ejb.PenalizareServiceEJB;
+import org.app.service.entities.Angajat;
 import org.app.service.entities.Penalizare;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -30,15 +34,28 @@ public class TestPenalizareDataServiceEJBArq {
 	private static PenalizareService service ;
 	
 	@Deployment
-	public static Archive<?> createDeployment(){
-		return ShrinkWrap.create(WebArchive.class,"SCRUM-S3-test.war")
-				.addPackage(Penalizare.class.getPackage())
-				.addClass(PenalizareService.class)
-				.addClass(PenalizareServiceEJB.class)
-				.addAsResource("META-INF/persistence.xml")
-				.addAsManifestResource(EmptyAsset.INSTANCE,"beans.xml");
-				
-	}
+
+    public static Archive<?> createDeployment(){
+
+           return ShrinkWrap.create(WebArchive.class,"msd-test.war")
+
+
+
+                        .addPackage(Penalizare.class.getPackage())
+
+                        .addPackage(EntityRepository.class.getPackage())
+
+                        .addPackage(PenalizareService.class.getPackage())
+
+                        .addPackage(PenalizareServiceEJB.class.getPackage())
+
+                        .addAsResource("META-INF/persistence.xml")
+
+                        .addAsManifestResource(EmptyAsset.INSTANCE,"beans.xml");
+
+                       
+
+    }
 	
 	@Test
 	public void test1_getMessage() {
@@ -62,7 +79,7 @@ public class TestPenalizareDataServiceEJBArq {
 		Integer penalizareToAdd=3;
 		for(int i=1;i<=penalizareToAdd;i++)
 		{
-			service.addPenalizare(new Penalizare((100+i), null, null));
+			service.addPenalizare(new Penalizare((100+i), null,null));
 		}
 		Collection<Penalizare> penalizare=service.getPenalizare();
 	

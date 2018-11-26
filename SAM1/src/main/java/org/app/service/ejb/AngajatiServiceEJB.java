@@ -37,10 +37,16 @@ public class AngajatiServiceEJB extends EntityRepositoryBase<Angajat> implements
 
 		return em.find(Angajat.class, marcaAngajat);
 	}
+	
 	public Collection<Angajat>getAngajati(){
-		List<Angajat> angajati=em.createQuery("Select a From Angajat a, Angajat.class").getResultList();
-		return angajati;
-	}
+
+        List<Angajat> angajati=em.createQuery("Select a From Angajat a", Angajat.class).getResultList();
+
+        return angajati;
+
+ }
+	
+
 	//custome read 
 	public Angajat getAngajatByMarcaAngajat(Integer marca) {
 		return em.createQuery("SELECT a from Angajat a Where a.marcaAngajat=:marca", Angajat.class).setParameter("marcaAngajat", marca).getSingleResult();

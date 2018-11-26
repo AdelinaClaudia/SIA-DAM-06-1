@@ -53,11 +53,11 @@ import javax.validation.constraints.NotNull;
 			this.procentPenalizare = procentPenalizare;
 			this.status = status;
 		}
-		public Penalizare(Integer idPenalizare, Float procentPenalizare) {
+		/*public Penalizare(Integer idPenalizare, Float procentPenalizare) {
 			super();
 			this.idPenalizare = idPenalizare;
 			this.procentPenalizare = procentPenalizare;
-		}
+		}*/
 		
 	}
 

@@ -39,7 +39,7 @@ public class ClientServiceEJB extends EntityRepositoryBase<Client> implements Cl
 		return em.find(Client.class, idClient);
 	}
 	public Collection<Client>getClient(){
-		List<Client> client=em.createQuery("Select c From Client c, Client.class").getResultList();
+		List<Client> client=em.createQuery("Select c From Client c", Client.class).getResultList();
 		return client;
 	}
 	//custome read 

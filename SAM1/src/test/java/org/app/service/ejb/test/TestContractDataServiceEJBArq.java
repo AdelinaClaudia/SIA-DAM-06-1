@@ -8,11 +8,11 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 
-import org.app.service.ejb.AngajatService;
-import org.app.service.ejb.AngajatiServiceEJB;
+import org.app.patterns.EntityRepository;
+
 import org.app.service.ejb.ContractService;
 import org.app.service.ejb.ContractServiceEJB;
-import org.app.service.entities.Client;
+
 import org.app.service.entities.Contract;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -32,16 +32,30 @@ public class TestContractDataServiceEJBArq {
 	@EJB
 	private static ContractService service ;
 	
-	@Deployment
-	public static Archive<?> createDeployment(){
-		return ShrinkWrap.create(WebArchive.class,"SCRUM-S3-test.war")
-				.addPackage(Contract.class.getPackage())
-				.addClass(ContractService.class)
-				.addClass(ContractServiceEJB.class)
-				.addAsResource("META-INF/persistence.xml")
-				.addAsManifestResource(EmptyAsset.INSTANCE,"beans.xml");
-				
-	}
+	
+	 @Deployment
+
+     public static Archive<?> createDeployment(){
+
+            return ShrinkWrap.create(WebArchive.class,"msd-test.war")
+
+
+
+                         .addPackage(Contract.class.getPackage())
+
+                         .addPackage(EntityRepository.class.getPackage())
+
+                         .addPackage(ContractService.class.getPackage())
+
+                         .addPackage(ContractServiceEJB.class.getPackage())
+
+                         .addAsResource("META-INF/persistence.xml")
+
+                         .addAsManifestResource(EmptyAsset.INSTANCE,"beans.xml");
+
+                        
+
+     }
 	
 	@Test
 	public void test1_getMessage() {
